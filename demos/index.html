@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="example">
+  <head>
+    <title>Veasy Angular Components</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css" media="screen" charset="UTF-8">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" media="screen" charset="UTF-8">
+    <!-- Veasy Angular Components -->
+    <link rel="stylesheet" href="../veasy-calendar/css/veasy-calendar.css" media="screen" charset="UTF-8">
+  </head>
+  <body>
+    <div class="container">
+      <section ng-controller="vMomentFormatController">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Veasy Moment Format</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <form name="myForm" novalidate>
+              <label>{{myDate.$pristine}}</label>
+              <br>
+              <label>{{myDate}}</label>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <input type="text" class="form-control" name="myInput" id="myInputId" ng-model="myDate" v-moment-format="DD/MM/YYYY HH:mm" required>
+                </div>
+                <div class="col-md-4">
+                  <button class="btn btn-primary" ng-disabled="!myForm.$valid" ng-click="save(myDate)">Save</button>
+                </div>
+              </div>
+              <br>
+              <br>
+              <code>myForm.myInput.$valid = {{myForm.myInput.$valid}}</code>
+              <br>
+              <code>myForm.myInput.$error = {{myForm.myInput.$error}}</code>
+              <br>
+              <code>myForm.$valid = {{myForm.$valid}}</code>
+              <br>
+              <code>myForm.$error.required = {{!!myForm.$error.required}}</code>
+              <br>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section ng-controller="vCalendarController">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Veasy Calendar</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <v-calendar config="vCalendarConfig"></v-calendar>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Libs -->
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../node_modules/angular/angular.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../node_modules/moment/moment.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../node_modules/moment-timezone/builds/moment-timezone-with-data.js" charset="UTF-8"></script>
+    <!-- Veasy Angular Components -->
+    <script type="text/javascript" src="../veasy.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../veasy-moment-format/js/services/veasy-moment-format.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../veasy-moment-format/js/directives/veasy-moment-format.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../veasy-calendar/js/services/veasy-calendar.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../veasy-calendar/js/directives/veasy-calendar.js" charset="UTF-8"></script>
+    <!-- App Scripts -->
+    <script type="text/javascript" src="example.js" charset="UTF-8"></script>
+  </body>
+</html>

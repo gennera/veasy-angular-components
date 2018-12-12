@@ -20,28 +20,20 @@
         <div class="row">
           <div class="col-md-12">
             <form name="myForm" novalidate>
-              <label>{{myDate.$pristine}}</label>
-              <br>
-              <label>{{myDate}}</label>
-              <br>
               <div class="row">
                 <div class="col-md-4">
-                  <input type="text" class="form-control" name="myInput" id="myInputId" ng-model="myDate" v-moment-format="DD/MM/YYYY HH:mm" required>
+                  <div class="form-group">
+                    <label>Datetime</label>
+                    <input type="text" class="form-control" ng-model="myDate" v-moment-format="DD/MM/YYYY HH:mm" required>
+                  </div>
+                  <div class="form-group">
+                    <span>Selected: {{myDate}}</span>
+                  </div>
                 </div>
                 <div class="col-md-4">
-                  <button class="btn btn-primary" ng-disabled="!myForm.$valid" ng-click="save(myDate)">Save</button>
+                  <button class="btn btn-primary" style="margin-top: 25px" ng-disabled="!myForm.$valid" ng-click="save(myDate)">Save</button>
                 </div>
               </div>
-              <br>
-              <br>
-              <code>myForm.myInput.$valid = {{myForm.myInput.$valid}}</code>
-              <br>
-              <code>myForm.myInput.$error = {{myForm.myInput.$error}}</code>
-              <br>
-              <code>myForm.$valid = {{myForm.$valid}}</code>
-              <br>
-              <code>myForm.$error.required = {{!!myForm.$error.required}}</code>
-              <br>
             </form>
           </div>
         </div>

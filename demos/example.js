@@ -4,8 +4,6 @@ angular.module('example', [
 ])
 
 .controller('vMomentFormatController', ['$scope', function ($scope) {
-  $scope.myDate = moment('2018-12-11 16:32', 'YYYY-MM-DD HH:mm');
-
   $scope.save = function (inputValue) {
     alert('Input value: ' + inputValue.format('DD/MM/YYYY HH:mm'));
   };

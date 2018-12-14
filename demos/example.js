@@ -83,7 +83,14 @@ angular.module('example', [
     };
   };
 
+  $scope.addNewEvent = function () {
+    $scope.$broadcast('veasyCalendar:addNewEvent', {});
+  };
+
   const eventClickListeners = function () {
+    $scope.$on('veasyCalendar:onClickDay', function (event, data) {
+      console.log('veasyCalendar:onClickDay', data);
+    });
     $scope.$on('veasyCalendar:onClickEvent', function (event, data) {
       console.log('veasyCalendar:onClickEvent', data);
     });

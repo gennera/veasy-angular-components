@@ -2,7 +2,7 @@ angular.module('veasy.calendar').directive('vCalendar', function (vCalendarServi
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: '../veasy-calendar/view/veasy-calendar.html',
+    templateUrl: '../veasy-calendar/templates/veasy-calendar.html',
     scope: {
       config: '=',
     },
@@ -31,7 +31,19 @@ angular.module('veasy.calendar').directive('vCalendar', function (vCalendarServi
       //
       // Modal
       //
-      $scope.onEventClick = function(data) {
+      $scope.$on('veasyCalendar:addNewEvent', function (event, data) {
+        $scope.openedEvent = {};
+        openModal('event-modal', { keyboard: true, backdrop: true });
+      });
+      
+      $scope.onClickDay = function (data) {
+        $scope.$emit('veasyCalendar:onClickDay', { message: JSON.stringify(data) });
+        $scope.openedEvent = {};
+        openModal('event-modal', { keyboard: true, backdrop: true });
+      };
+
+      $scope.onClickEvent = function(e, data) {
+        e.stopPropagation();
         $scope.$emit('veasyCalendar:onClickEvent', { message: JSON.stringify(data) });
         $scope.openedEvent = angular.copy(data);
         openModal('event-modal', { keyboard: true, backdrop: true });

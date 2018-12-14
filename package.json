@@ -1,5 +1,5 @@
 {
-  "name": "veasy-angular",
+  "name": "veasy-angular-components",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fernando Machado Bernardino <fernandombernardino@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",

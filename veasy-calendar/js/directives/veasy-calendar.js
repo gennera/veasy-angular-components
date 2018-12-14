@@ -1,4 +1,4 @@
-angular.module('veasy.calendar').directive('vCalendar', ['vCalendarService', function (vCalendarService) {
+angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarService', function ($timeout, vCalendarService) {
   return {
     restrict: 'E',
     replace: true,
@@ -7,11 +7,24 @@ angular.module('veasy.calendar').directive('vCalendar', ['vCalendarService', fun
       config: '=',
     },
     link: function ($scope, $element, $attributes, $controller) {
-      const SCHEDULED_EVENTS = vCalendarService.catalogEvents($scope.config.events);
+      let SCHEDULED_EVENTS;
       
       const init = function () {
         $scope.openedEvent = {};
-        $scope.calendar = vCalendarService.buildCalendar($scope.config, SCHEDULED_EVENTS);
+        buildCalendar($scope.config);
+        watches();
+      };
+
+      const buildCalendar = function (calendarConfig) {
+        SCHEDULED_EVENTS = vCalendarService.catalogEvents(calendarConfig.events || []);
+        $scope.calendar = vCalendarService.buildCalendar(calendarConfig, SCHEDULED_EVENTS);
+      };
+
+      const watches = function () {
+        $scope.$watchCollection('config.events', function (newEvents, oldEvents) {
+          $scope.config.events = newEvents;
+          buildCalendar($scope.config);
+        });
       };
 
       $scope.previousMonth = function () {

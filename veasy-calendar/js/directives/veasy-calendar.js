@@ -1,8 +1,8 @@
-angular.module('veasy.calendar').directive('vCalendar', function (vCalendarService) {
+angular.module('veasy.calendar').directive('vCalendar', ['vCalendarService', function (vCalendarService) {
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: '../veasy-calendar/templates/veasy-calendar.html',
+    templateUrl: 'veasy-calendar.html',
     scope: {
       config: '=',
     },
@@ -70,4 +70,4 @@ angular.module('veasy.calendar').directive('vCalendar', function (vCalendarServi
       init();
     }
   };
-});
+}]);

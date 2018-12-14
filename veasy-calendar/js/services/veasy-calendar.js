@@ -1,4 +1,4 @@
-angular.module('veasy.calendar').factory('vCalendarService', function ($compile) {
+angular.module('veasy.calendar').factory('vCalendarService', function () {
   const buildCalendar = function (config, events) {
     const date = config.date || moment().startOf('day');
     return {

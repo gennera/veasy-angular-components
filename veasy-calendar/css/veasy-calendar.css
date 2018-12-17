@@ -31,7 +31,8 @@
 .vcalendar-body-col {
   display: flex;
 	flex-direction: column;
-	flex: 1;
+  flex: 1;
+  height: 100px;
   padding: 5px;
 	border: 1px solid #ccc;
 	border-top: none;

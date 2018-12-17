@@ -1,7 +1,7 @@
 .vcalendar-header {
 	display: flex;
-    align-items: center;
-    justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 	padding: 10px 0;
 	font-weight: 500;
 }
@@ -36,8 +36,6 @@
 	border: 1px solid #ccc;
 	border-top: none;
 	border-right: none;
-  height: 10rem;
-  /* height: 100px; */
 	overflow: hidden;
 	background-color: #fff;
 }
@@ -52,9 +50,10 @@
 }
 .vcalendar-day {
 	display: flex;
-	height: 30px;
+	height: 22px;
 	font-size: 1em;
-	color: #333;
+  color: #333;
+  border-bottom: 1px solid #cccccc;
 }
 .vcalendar-is-not-current-month-day {
 	background-color: #f1f1f1 !important;
@@ -66,27 +65,22 @@
 	background-color: #f9f9f9;
 }
 .vcalendar-today {
-	/* font-weight: 600; */
 	background-color: #f0f8ff;
 }
 .vcalendar-event {
 	display: flex;
-    background-color: #dcdcdc;
-    padding: 0px 3px;
+  background-color: #dcdcdc;
+  padding: 0px 3px;
 	border-radius: 4px;
 	margin-bottom: 2px;
 	font-size: 12px;
 	cursor: pointer;
-    /* flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; */
 }
 .vcalendar-event:last-child {
 	margin-bottom: 4px;
 }
 .vcalendar-util-truncate {
 	white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

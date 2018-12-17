@@ -17,16 +17,13 @@ angular.module('example', [
   const init = function () {
     eventClickListeners();
     $scope.vCalendarConfig = {
-      bindableProperty: 'startDate',
-      eventModal: {
-        title: 'Evento',
-        date: moment('2018-11-01'),
-        fields: [
-          { label: 'Título', type: 'text', value: 'title' },
-          { label: 'Data', type: 'moment', value: 'startDate', format: 'DD/MM/YYYY HH:mm' }
-        ]
-      },
-      events: []
+      initialDate: moment('2018-12-01'),
+      fields: [
+        { label: 'Título', type: 'text', property: 'title', isEventTitle: true },
+        { label: 'Data', type: 'moment', property: 'startDate', format: 'DD/MM/YYYY HH:mm', isEventOrigin: true }
+      ],
+      events: [],
+      eventModal: { title: 'Título da Modal de Evento' }
     };
     getEvents();
   };

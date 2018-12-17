@@ -1,6 +1,6 @@
 angular.module('veasy.calendar').factory('vCalendarService', function () {
   const buildCalendar = function (config, events) {
-    const date = config.date || moment().startOf('day');
+    const date = config.initialDate ? moment(config.initialDate).startOf('day') : moment().startOf('day');
     return {
       date,
       title: date.format('MMMM YYYY'),
@@ -63,12 +63,14 @@ angular.module('veasy.calendar').factory('vCalendarService', function () {
     return [];
   };
 
-  const catalogEvents = function (events, bindableProperty) {
+  const catalogEvents = function (config) {
+    const events = config.events;
+    const field = config.fields.find(field => field.isEventOrigin);
     const parsedEvents = {};
     for (const event of events) {
-      const year = moment(event[bindableProperty]).year();
-      const month = moment(event[bindableProperty]).month();
-      const day = moment(event[bindableProperty]).date();
+      const year = moment(event[field.property]).year();
+      const month = moment(event[field.property]).month();
+      const day = moment(event[field.property]).date();
       parsedEvents[year] = parsedEvents[year] || {};
       parsedEvents[year][month] = parsedEvents[year][month] || {};
       parsedEvents[year][month][day] = parsedEvents[year][month][day] || [];

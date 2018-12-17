@@ -16,7 +16,7 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
       };
 
       const buildCalendar = function (config) {
-        SCHEDULED_EVENTS = vCalendarService.catalogEvents(config.events || [], config.bindableProperty);
+        SCHEDULED_EVENTS = vCalendarService.catalogEvents(config);
         $scope.calendar = vCalendarService.buildCalendar(config, SCHEDULED_EVENTS);
       };
 
@@ -27,16 +27,21 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
         });
       };
 
+      $scope.getEventTitle = function () {
+        const field = $scope.config.fields.find(field => field.isEventTitle) || {};
+        return field.property || '...';
+      };
+
       $scope.previousMonth = function () {
         $scope.$emit('veasyCalendar:onClickPreviousMonthStart');
-        $scope.config.date = $scope.calendar.date.subtract(1, 'month');
+        $scope.config.initialDate = $scope.calendar.date.subtract(1, 'month');
         $scope.calendar = vCalendarService.buildCalendar($scope.config, SCHEDULED_EVENTS);
         $scope.$emit('veasyCalendar:onClickPreviousMonthEnd');
       };
 
       $scope.nextMonth = function () {
         $scope.$emit('veasyCalendar:onClickNextMonthStart');
-        $scope.config.date = $scope.calendar.date.add(1, 'month');
+        $scope.config.initialDate = $scope.calendar.date.add(1, 'month');
         $scope.calendar = vCalendarService.buildCalendar($scope.config, SCHEDULED_EVENTS);
         $scope.$emit('veasyCalendar:onClickNextMonthEnd');
       };
@@ -50,20 +55,20 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
       });
       
       $scope.onClickDay = function (data) {
-        $scope.$emit('veasyCalendar:onClickDay', { message: JSON.stringify(data) });
+        $scope.$emit('veasyCalendar:onClickDay', data);
         $scope.openedEvent = {};
         openModal('event-modal', { keyboard: true, backdrop: true });
       };
 
       $scope.onClickEvent = function(e, data) {
         e.stopPropagation();
-        $scope.$emit('veasyCalendar:onClickEvent', { message: JSON.stringify(data) });
+        $scope.$emit('veasyCalendar:onClickEvent', data);
         $scope.openedEvent = angular.copy(data);
         openModal('event-modal', { keyboard: true, backdrop: true });
       };
 
       $scope.onSaveEvent = function (data) {
-        $scope.$emit('veasyCalendar:onSaveEvent', { message: JSON.stringify(data) });
+        $scope.$emit('veasyCalendar:onSaveEvent', data);
         $scope.openedEvent = {};
         closeModal('event-modal');
       };

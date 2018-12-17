@@ -29,14 +29,15 @@
 	display: flex;
 }
 .vcalendar-body-col {
-    display: flex;
+  display: flex;
 	flex-direction: column;
 	flex: 1;
-    padding: 5px;
+  padding: 5px;
 	border: 1px solid #ccc;
 	border-top: none;
 	border-right: none;
-	height: 10rem;
+  height: 10rem;
+  /* height: 100px; */
 	overflow: hidden;
 	background-color: #fff;
 }

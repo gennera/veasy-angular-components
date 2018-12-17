@@ -57,18 +57,18 @@ angular.module('veasy.calendar').factory('vCalendarService', function () {
     const day = date.date();
     if (allEvents[year]) {
       if (allEvents[year][month]) {
-        return (allEvents[year][month][day] || []).sort((a, b) => moment(a.date).isSameOrBefore(b.date) ? -1 : 1);
+        return (allEvents[year][month][day] || []).sort((a, b) => moment(a.date).isSameOrBefore(b.date) ? 1 : -1);
       }
     }
     return [];
   };
 
-  const catalogEvents = function (events) {
+  const catalogEvents = function (events, bindableProperty) {
     const parsedEvents = {};
     for (const event of events) {
-      const year = moment(event.date).year();
-      const month = moment(event.date).month();
-      const day = moment(event.date).date();
+      const year = moment(event[bindableProperty]).year();
+      const month = moment(event[bindableProperty]).month();
+      const day = moment(event[bindableProperty]).date();
       parsedEvents[year] = parsedEvents[year] || {};
       parsedEvents[year][month] = parsedEvents[year][month] || {};
       parsedEvents[year][month][day] = parsedEvents[year][month][day] || [];

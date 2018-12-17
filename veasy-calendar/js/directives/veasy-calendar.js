@@ -15,9 +15,9 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
         watches();
       };
 
-      const buildCalendar = function (calendarConfig) {
-        SCHEDULED_EVENTS = vCalendarService.catalogEvents(calendarConfig.events || []);
-        $scope.calendar = vCalendarService.buildCalendar(calendarConfig, SCHEDULED_EVENTS);
+      const buildCalendar = function (config) {
+        SCHEDULED_EVENTS = vCalendarService.catalogEvents(config.events || [], config.bindableProperty);
+        $scope.calendar = vCalendarService.buildCalendar(config, SCHEDULED_EVENTS);
       };
 
       const watches = function () {

@@ -74,9 +74,17 @@ angular.module('veasy.calendar').factory('vCalendarService', function () {
       parsedEvents[year] = parsedEvents[year] || {};
       parsedEvents[year][month] = parsedEvents[year][month] || {};
       parsedEvents[year][month][day] = parsedEvents[year][month][day] || [];
-      parsedEvents[year][month][day].push(event);
+      parsedEvents[year][month][day].push(parseFieldTypes(event, config));
     }
     return parsedEvents;
+  };
+
+  const parseFieldTypes = function (event, config) {
+    const fields = config.fields.filter(field => field.type === 'moment' || field.type === 'date');
+    for (const field of fields) {
+      event[field.property] = moment(event[field.property])
+    }
+    return event;
   };
 
   return { buildCalendar, catalogEvents };

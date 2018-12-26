@@ -16,38 +16,12 @@
         <div style="overflow: auto; flex-grow: 1;max-height: 67px;padding-top: 2px;">
           <div class="vcalendar-event" ng-click="onClickEvent($event, event)" ng-style="{ 'background-color': event.color }" ng-repeat="event in day.events">
             <span class="vcalendar-util-truncate">{{event[getEventTitle()]}}</span>
+            <span class="">{{getEventTime(event.startDate, event.startDate)}}</span>
           </div>
         </div>
       </div>
   </div>
   </div>
   <div class="vcalendar-footer">
-  </div>
-
-  <!-- Externalizar para o cliente criar essa modal e passa-la como parâmetro... -->
-  <!-- Deve ser disponibilizado o nome das funções de acesso -->
-  <div id="event-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-          <h4 class="modal-title">{{config.eventModal.title}}</h4>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group" ng-repeat="field in config.fields">
-              <label for="{{field.field}}">{{field.label}}</label>
-              <input ng-if="field.type === 'text'" id="{{field.field}}" type="text" class="form-control" ng-model="openedEvent[field.property]" />
-              <input ng-if="field.type === 'number'" id="{{field.field}}" type="number" class="form-control" ng-model="openedEvent[field.property]" />
-              <input ng-if="field.type === 'moment'" id="{{field.field}}" type="text" class="form-control" ng-model="openedEvent[field.property]" v-moment-format="{{field.format}}" />
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" ng-click="onSaveEvent(openedEvent)">Save</button>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

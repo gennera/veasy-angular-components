@@ -32,6 +32,11 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
         return field.property || '...';
       };
 
+      $scope.getEventTime = function (startDate, endDate) {
+        const format = 'HH:mm';
+        return `${moment(startDate).format(format)} - ${moment(endDate).format(format)}`;
+      };
+
       $scope.previousMonth = function () {
         $scope.$emit('veasyCalendar:onClickPreviousMonthStart');
         $scope.config.initialDate = $scope.calendar.date.subtract(1, 'month');
@@ -48,41 +53,14 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
 
       //
       // Modal
-      //
-      $scope.$on('veasyCalendar:addNewEvent', function (event, data) {
-        $scope.openedEvent = {};
-        openModal('event-modal', { keyboard: true, backdrop: true });
-      });
-      
-      $scope.onClickDay = function (data) {
+      //      
+      $scope.onClickDay = function (e, data) {
         $scope.$emit('veasyCalendar:onClickDay', data);
-        $scope.openedEvent = {};
-        openModal('event-modal', { keyboard: true, backdrop: true });
       };
 
       $scope.onClickEvent = function(e, data) {
         e.stopPropagation();
         $scope.$emit('veasyCalendar:onClickEvent', data);
-        $scope.openedEvent = angular.copy(data);
-        openModal('event-modal', { keyboard: true, backdrop: true });
-      };
-
-      $scope.onSaveEvent = function (data) {
-        $scope.$emit('veasyCalendar:onSaveEvent', data);
-        $scope.openedEvent = {};
-        closeModal('event-modal');
-      };
-
-      const openModal = function (id, modalConfig) {
-        angular.element('#' + id).modal({
-          keyboard: modalConfig.keyboard,
-          backdrop: modalConfig.backdrop
-        });
-      };
-
-      const closeModal = function (id) {
-        angular.element('#' + id).modal('hide');
-        $scope.openedEvent = {};
       };
 
       init();

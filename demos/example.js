@@ -14,6 +14,8 @@ angular.module('example', [
 }])
 
 .controller('vCalendarController', function ($scope, $timeout) {
+  moment.locale('pt-BR');
+
   const init = function () {
     eventClickListeners();
     $scope.vCalendarConfig = {
@@ -90,23 +92,20 @@ angular.module('example', [
   }
 
   $scope.addNewEvent = function () {
-    $scope.$broadcast('veasyCalendar:addNewEvent', {});
+    // $scope.$broadcast('veasyCalendar:addNewEvent', {});
+    closeModal('event-modal', { keyboard: true, backdrop: true });
   };
 
   const eventClickListeners = function () {
     $scope.$on('veasyCalendar:onClickDay', function (event, data) {
       console.log('veasyCalendar:onClickDay', data);
+      $scope.event = {};
+      openModal('event-modal', { keyboard: true, backdrop: true });
     });
     $scope.$on('veasyCalendar:onClickEvent', function (event, data) {
       console.log('veasyCalendar:onClickEvent', data);
-    });
-
-    $scope.$on('veasyCalendar:onCloseEvent', function (event, data) {
-      console.log('veasyCalendar:onCloseEvent', data);
-    });
-
-    $scope.$on('veasyCalendar:onSaveEvent', function (event, data) {
-      console.log('veasyCalendar:onSaveEvent', data);
+      $scope.event = angular.copy(data);
+      openModal('event-modal', { keyboard: true, backdrop: true });
     });
 
     $scope.$on('veasyCalendar:onClickNextMonthStart', function (event) {
@@ -122,6 +121,18 @@ angular.module('example', [
     $scope.$on('veasyCalendar:onClickPreviousMonthEnd', function (event) {
       console.log('veasyCalendar:onClickPreviousMonthEnd');
     });
+  };
+
+  const openModal = function (id, modalConfig) {
+    angular.element('#' + id).modal({
+      keyboard: modalConfig.keyboard,
+      backdrop: modalConfig.backdrop
+    });
+  };
+
+  const closeModal = function (id) {
+    angular.element('#' + id).modal('hide');
+    delete $scope.event;
   };
 
   init();

@@ -1,9 +1,9 @@
 # Veasy Angular Components
 
 * Veasy Moment Format
-* Veasy Calendar (working on)
+* Veasy Calendar
 * Veasy Datepicker (pending)
-* Veasy Table (pending)
+* Veasy Table (working on)
 * Veasy Modal (pending)
 * Veasy Input Search (pending)
 

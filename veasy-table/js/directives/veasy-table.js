@@ -2,7 +2,7 @@ angular.module('veasy.table').directive('veasyTable', ['$templateCache', '$windo
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'template.html',
+    templateUrl: 'veasy-table.html',
     scope: {
       config: '=',
       list: '='

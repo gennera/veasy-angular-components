@@ -150,12 +150,11 @@ angular.module('myModule', ['veasy', 'veasy.table']).controller('myController', 
     findAll: function() {
       var deferred = $q.defer();
       $timeout(function() {
-        $http.get('../../mocks/MOCK_DATA_NEW.json').then(function(res) {
+        $http.get('../mocks/mock-veasy-table.json').then(function(res) {
           res.data.forEach(function(row) {
             row.birth_date = new Date(row.birth_date);
             row.money = parseFloat(row.money);
           });
-
           deferred.resolve(res.data);
         }, function(err) {
           deferred.reject(err);

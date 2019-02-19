@@ -1,11 +1,12 @@
 {
   "name": "veasy-angular-components",
-  "version": "1.0.16",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node_modules/http-server/bin/http-server -a 127.0.0.1 -p 4000 -c-1",
     "dist": "NODE_ENV=development gulp dist",
+    "dev": "npm run dist && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fernando Machado Bernardino <fernandombernardino@gmail.com>",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "angular": "^1.7.5",
+    "angular-sanitize": "^1.7.7",
     "bootstrap": "3.3.7",
     "font-awesome": "^4.7.0",
     "gulp-cli": "^2.0.1",

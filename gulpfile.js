@@ -28,6 +28,11 @@ const RESOURCES = {
   },
   VEASY_MOMENT_FORMAT: {
     js: ['veasy-moment-format/js/services/veasy-moment-format.js', 'veasy-moment-format/js/directives/veasy-moment-format.js']
+  },
+  VEASY_TABLE: {
+    templates: ['veasy-table/templates/veasy-table.html'],
+    css: ['veasy-table/css/veasy-table.css'],
+    js: ['veasy-table/js/filters/*.js', 'veasy-table/js/services/*.js', 'veasy-table/js/directives/veasy-table.js']
   }
 };
 
@@ -104,6 +109,45 @@ gulp.task('VEASY_CALENDAR_TEMPLATE_MIN', function () {
 });
 
 // ---------------------------------------------------------------
+// Veasy Table
+// ---------------------------------------------------------------
+gulp.task('VEASY_TABLE_JS_MIN', function () {
+  return gulp.src(RESOURCES.VEASY_TABLE.js)
+    .pipe(babel({ presets: ['@babel/env'] }))
+    .pipe(uglify().on('error', log.red))
+    .pipe(concat('veasy-table.min.js'))
+    .pipe(gulp.dest('dist/js'))
+    .on('error', log.red);
+});
+gulp.task('VEASY_TABLE_CSS_MIN', function () {
+  return gulp.src(RESOURCES.VEASY_TABLE.css)
+    .pipe(minifyCss().on('error', log.red))
+    .pipe(concat('veasy-table.min.css'))
+    .pipe(gulp.dest('dist/css'))
+    .on('error', log.red);
+});
+gulp.task('VEASY_TABLE_TEMPLATE_MIN', function () {
+  gulp.src(RESOURCES.VEASY_TABLE.templates)
+    .pipe(minifyHtml({
+      collapseBooleanAttributes: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true,
+      removeComments: true,
+      removeEmptyAttributes: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true
+    }))
+    .pipe(ngHtml2Js({
+      moduleName: 'veasy.table',
+    }))
+    .pipe(uglify())
+    .pipe(concat('veasy-table-templates.min.js'))
+    .pipe(gulp.dest('dist/js'))
+    .on('error', log.red);
+});
+
+// ---------------------------------------------------------------
 // Principal
 // ---------------------------------------------------------------
 gulp.task('VEASY_MOMENT_FORMAT', function () {
@@ -116,7 +160,12 @@ gulp.task('VEASY_CALENDAR', function () {
   sequence('VEASY_CALENDAR_JS_MIN', 'VEASY_CALENDAR_CSS_MIN', 'VEASY_CALENDAR_TEMPLATE_MIN');
 });
 
+gulp.task('VEASY_TABLE', function () {
+  log.blue('[VEASY TABLE] Building...');
+  sequence('VEASY_TABLE_JS_MIN', 'VEASY_TABLE_CSS_MIN', 'VEASY_TABLE_TEMPLATE_MIN');
+});
+
 gulp.task('dist', ['clean'], function () {
   log.blue('Building on distribution mode');
-  sequence('VEASY_JS_MIN', 'VEASY_MOMENT_FORMAT', 'VEASY_CALENDAR');
+  sequence('VEASY_JS_MIN', 'VEASY_MOMENT_FORMAT', 'VEASY_CALENDAR', 'VEASY_TABLE');
 });

@@ -16,7 +16,7 @@
         <div style="overflow: auto; flex-grow: 1;max-height: 67px;padding-top: 2px;">
           <div class="vcalendar-event" ng-click="onClickEvent($event, event)" ng-style="{ 'background-color': event.color }" ng-repeat="event in day.events">
             <span class="vcalendar-util-truncate">{{event[getEventTitle()]}}</span>
-            <span class="">{{getEventTime(event.startDate, event.startDate)}}</span>
+            <span class="">{{getEventTime(event.startDate, event.endDate)}}</span>
           </div>
         </div>
       </div>

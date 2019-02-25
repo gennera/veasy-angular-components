@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: space-between;
 	padding: 10px 0;
-	font-weight: 500;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 .vcalendar-arrow {
 	font-size: 20px;
@@ -16,7 +17,11 @@
   padding: 5px;
 	border: 1px solid #ccc;
 	border-right: none;
-	text-align: center;
+  font-size: 15px;
+  font-weight: 200;
+  text-align: center;
+  color: #777;
+  background-color: #eee;
 }
 .vcalendar-header-col:first-child {
   border-top-left-radius: 4px;
@@ -38,7 +43,8 @@
 	border-top: none;
 	border-right: none;
 	overflow: hidden;
-	background-color: #fff;
+  background-color: #fff;
+  cursor: pointer;
 }
 .vcalendar-body-col:last-child {
 	border-right: 1px solid #ccc;
@@ -56,7 +62,7 @@
   color: #333;
 }
 .vcalendar-is-not-current-month-day {
-	background-color: #f1f1f1 !important;
+	background-color: inherit;
 }
 .vcalendar-is-not-current-month-day .vcalendar-day {
 	color: #ccc !important;

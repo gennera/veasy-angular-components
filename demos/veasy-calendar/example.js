@@ -15,7 +15,9 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
   const init = function () {
     eventClickListeners();
     $scope.vCalendarConfig = {
-      initialDate: moment('2018-12-01'),
+      // viewMode: 'month',
+      viewMode: 'week',
+      initialDate: moment('2018-10-22'),
       fields: [
         { label: 'Título', type: 'text', property: 'title', isEventTitle: true },
         { label: 'Data', type: 'moment', property: 'startDate', format: 'DD/MM/YYYY HH:mm', isEventOrigin: true }
@@ -53,8 +55,39 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
         { id: 22, title: 'Walden University', startDate: '2018-12-28T16:16:00.000Z', endDate: '2018-12-28T17:16:00.000Z' },
         { id: 23, title: 'The Robert Gordon University', startDate: '2018-08-11T18:44:00.000Z', endDate: '2018-08-11T19:44:00.000Z', color: '#8a6eab' },
         { id: 24, title: 'Mie University', startDate: '2018-01-17T11:05:00.000Z', endDate: '2018-01-17T12:05:00.000Z' },
-        { id: 25, title: 'School of Management Fribourg', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T05:01:00.000Z' },
-        { id: 26, title: 'University of Rousse', startDate: '2018-05-07T20:43:00.000Z', endDate: '2018-05-07T21:43:00.000Z' }
+        
+        { id: 25, title: 'Teste 1', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T05:01:00.000Z' },
+        { id: 26, title: 'Teste 2', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T06:01:00.000Z' },
+        { id: 27, title: 'Teste 3', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T07:01:00.000Z' },
+        { id: 28, title: 'Teste 4', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T08:01:00.000Z' },
+        { id: 29, title: 'Teste 5', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T09:01:00.000Z' },
+        { id: 30, title: 'Teste 7', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T10:01:00.000Z' },
+        { id: 31, title: 'Teste 8', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T11:01:00.000Z' },
+        { id: 32, title: 'Teste 9', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T12:01:00.000Z' },
+        { id: 33, title: 'Teste 10', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T13:01:00.000Z' },
+        { id: 34, title: 'Teste 11', startDate: '2018-10-22T04:01:00.000Z', endDate: '2018-10-22T14:01:00.000Z' },
+        
+        { id: 35, title: 'Teste 12', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T06:01:00.000Z' },
+        { id: 36, title: 'Teste 13', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T07:01:00.000Z' },
+        { id: 37, title: 'Teste 14', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T08:01:00.000Z' },
+        { id: 38, title: 'Teste 15', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T09:01:00.000Z' },
+        { id: 39, title: 'Teste 16', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T10:01:00.000Z' },
+        { id: 40, title: 'Teste 17', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T11:01:00.000Z' },
+        { id: 41, title: 'Teste 18', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T12:01:00.000Z' },
+        { id: 42, title: 'Teste 19', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T13:01:00.000Z' },
+        { id: 43, title: 'Teste 20', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T14:01:00.000Z' },
+        { id: 44, title: 'Teste 21', startDate: '2018-10-22T05:01:00.000Z', endDate: '2018-10-22T15:01:00.000Z' },
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        { id: 35, title: 'University of Rousse', startDate: '2018-05-07T20:43:00.000Z', endDate: '2018-05-07T21:43:00.000Z' },
       ];
     }, 1000);
   }

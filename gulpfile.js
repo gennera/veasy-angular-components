@@ -169,3 +169,10 @@ gulp.task('dist', ['clean'], function () {
   log.blue('Building on distribution mode');
   sequence('VEASY_JS_MIN', 'VEASY_MOMENT_FORMAT', 'VEASY_CALENDAR', 'VEASY_TABLE');
 });
+
+gulp.task('dev', function () {
+  log.blue('Alterações');
+  gulp.watch('veasy-calendar/**/*', ['VEASY_CALENDAR']);
+  gulp.watch('veasy-table/**/*', ['VEASY_TABLE']);
+  gulp.watch('veasy-moment-format/**/*', ['VEASY_MOMENT_FORMAT']);
+});

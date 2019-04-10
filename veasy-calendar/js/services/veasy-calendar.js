@@ -1,17 +1,33 @@
 angular.module('veasy.calendar').factory('vCalendarService', function () {
   const buildCalendar = function (config, events) {
     const date = config.initialDate ? moment(config.initialDate).startOf('day') : moment().startOf('day');
+    const viewMode = config.viewMode || 'month';
     return {
       date,
-      title: date.format('MMMM YYYY'),
+      viewMode,
+      title: getTitle(date, viewMode),
       year: date.year(),
       month: date.month(),
-      // weekDays: moment.weekdays(),
       weekDays: moment.weekdaysShort(),
-      // weekDays: moment.weekdaysMin(),
-      weeks: buildMonth(date, events, date.clone().month()),
+      weeks: buildMonth(date.clone(), events, date.clone().month()),
+      week: buildWeek(date.clone(), events, date.clone().month()),
       events
     };
+  };
+
+  const getTitle = function (date, viewMode) {
+    if (viewMode === 'month') {
+      return date.format('MMMM YYYY');
+    }
+    const from = date.clone().startOf('week');
+    const to = date.clone().endOf('week');
+    if (from.format('MMMM YYYY') === to.format('MMMM YYYY')) {
+      return from.format('MMMM YYYY');
+    }
+    if (from.year() === to.year()) {
+      return from.format('MMM') + ' - ' + to.format('MMM YYYY');
+    }
+    return from.format('MMM YYYY') + ' - ' + to.format('MMM YYYY');
   };
 
   const buildMonth = function (date, events, currentMonth) {

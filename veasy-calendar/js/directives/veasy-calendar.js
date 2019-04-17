@@ -12,7 +12,33 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
       const init = function () {
         $scope.viewMode = $scope.config.viewMode || 'month';
         $scope.openedEvent = {};
-        $scope.timeslots = [
+        // $scope.timeslots = [
+        //   { time: '00:00', show: false },
+        //   { time: '01:00', show: true },
+        //   { time: '02:00', show: true },
+        //   { time: '03:00', show: true },
+        //   { time: '04:00', show: true },
+        //   { time: '05:00', show: true },
+        //   { time: '06:00', show: true },
+        //   { time: '07:00', show: true },
+        //   { time: '08:00', show: true },
+        //   { time: '09:00', show: true },
+        //   { time: '10:00', show: true },
+        //   { time: '11:00', show: true },
+        //   { time: '12:00', show: true },
+        //   { time: '13:00', show: true },
+        //   { time: '14:00', show: true },
+        //   { time: '15:00', show: true },
+        //   { time: '16:00', show: true },
+        //   { time: '17:00', show: true },
+        //   { time: '18:00', show: true },
+        //   { time: '19:00', show: true },
+        //   { time: '20:00', show: true },
+        //   { time: '21:00', show: true },
+        //   { time: '22:00', show: true },
+        //   { time: '23:00', show: true }
+        // ];
+        $scope.config.timeslots = [
           { time: '00:00', show: false },
           { time: '01:00', show: true },
           { time: '02:00', show: true },
@@ -102,7 +128,7 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
         return event.startDate.hour() === parseInt(timeslot.time.substr(0, 2));
       };
 
-      $scope.getEventStyle = function (event, index, events) {
+      $scope.getEventStyle = function (event, eventIndex, timeslotIndex, events) {
         const border = 2;
         const size = events.length - 1;
         // const visibilityPercentual = 10;
@@ -111,13 +137,41 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', 'vCalendarS
         const hours = duration.asMinutes() / 60;
 
         return {
+          'position': 'absolute',
           'background-color': event.color,
           'width': `calc(100% - ${border * 2}px - (${size} * ${visibilityPercentual}))`,
           'height': `calc((100% * ${hours}) - ${border * 2}px)`,
           // 'left': `calc(${index} * ${visibilityPercentual} + ${border}px)`,
-          'left': `calc(${index} * ${visibilityPercentual} - ${60/size*index}px)`,
-          'min-width': '60px'
+          'left': `calc(${eventIndex} * ${visibilityPercentual} - ${60/size*eventIndex}px)`,
+          'min-width': '60px',
+          'min-height': '17px'
+          // 'z-index': index + 1
         };
+      };
+
+      $scope.getAllDayEventStyle = function (event) {
+        const diff = moment(event.endDate).diff(moment(event.startDate), 'days');
+        const days = moment.duration(diff, 'days').asDays();
+
+        return {
+          'position': 'relative',
+          'width': `calc(${300}% + (10px * ${days}))`,
+          'z-index': 2
+        }
+      }
+
+      $scope.getAllDayEvents = function (day) {
+        const events = [];
+        for (let i = 0; i < day.timeslots.length; i++) {
+          const timeslot = day.timeslots[i];
+          for (let j = 0; j < timeslot.events.length; j++) {
+            const event = timeslot.events[j];
+            if (event.allDay) {
+              events.push(event);
+            }
+          }
+        }
+        return events;
       };
 
       //

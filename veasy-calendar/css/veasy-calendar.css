@@ -224,20 +224,19 @@
 
 
 .veasycalendar-event {
-  background-color: #62b1c3;
+  background-color: #609acc;
   color: #ffffff;
   padding: 0 5px;
   border-radius: 4px;
   font-size: 12px;
-  border: 1px solid #3e7582;
+  border: 1px solid #2d6da4;
   margin-bottom: 2px;
   
-  position: absolute;
   z-index: 1;
 }
 
 .veasycalendar-event:hover {
-  z-index: 2;
+  z-index: 10;
   box-shadow: 1px 1px 3px 2px #e4e4e4;
   cursor: pointer;
 }

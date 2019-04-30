@@ -242,5 +242,23 @@
 }
 
 
+
+.veasy-calendar-allday-line {
+  display: flex;
+  flex: 1;
+  height: 21px;
+}
+.veasy-calendar-allday-slot {
+  position: relative;
+  /* display: flex; */
+  flex: 1;
+  border-left: 1px solid #ccc;
+}
+.veasy-calendar-allday-slot:last-child {
+  border-right: 1px solid #ccc;
+}
+
+
+
 .veasycalendar-footer {}
 

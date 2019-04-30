@@ -61,7 +61,7 @@ angular.module('veasy.calendar').factory('vCalendarService', function () {
       month: date.format('MM'),
       year: date.format('YYYY'),
       // FIXME: DEPRECATED
-      events: fetchDayEvents(date, events),
+      // events: fetchDayEvents(date, events),
       isCurrentMonth: date.month() === currentMonth,
       isWeekend: date.day() === 0 || date.day() === 6,
       isToday: date.isSame(moment().startOf('day')),
@@ -106,9 +106,6 @@ angular.module('veasy.calendar').factory('vCalendarService', function () {
     if (events[year]) {
       if (events[year][month]) {
         if (events[year][month][day]) {
-          // if (events[year][month][day].events) {
-          //   return events[year][month][day].events.sort((a, b) => moment(a.date).isSameOrBefore(b.date) ? 1 : -1);
-          // }
           return (events[year][month][day][time] || []).sort((a, b) => moment(a.date).isSameOrBefore(b.date) ? 1 : -1);
         }
       }
@@ -117,22 +114,22 @@ angular.module('veasy.calendar').factory('vCalendarService', function () {
   };
 
   // FIXME: DEPRECATED
-  const fetchDayEvents = function (date, events) {
-    const year = date.year();
-    const month = date.month();
-    const day = date.date();
-    if (events[year]) {
-      if (events[year][month]) {
-        // return (events[year][month][day] || []).sort((a, b) => moment(a.date).isSameOrBefore(b.date) ? 1 : -1);
-        if (events[year][month][day]) {
-          if (events[year][month][day].events) {
-            return events[year][month][day].events.sort((a, b) => moment(a.date).isSameOrBefore(b.date) ? 1 : -1);
-          }
-        }
-      }
-    }
-    return [];
-  };
+  // const fetchDayEvents = function (date, events) {
+  //   const year = date.year();
+  //   const month = date.month();
+  //   const day = date.date();
+  //   if (events[year]) {
+  //     if (events[year][month]) {
+  //       // return (events[year][month][day] || []).sort((a, b) => moment(a.date).isSameOrBefore(b.date) ? 1 : -1);
+  //       if (events[year][month][day]) {
+  //         if (events[year][month][day].events) {
+  //           return events[year][month][day].events.sort((a, b) => moment(a.date).isSameOrBefore(b.date) ? 1 : -1);
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return [];
+  // };
 
   const catalogEvents = function (config) {
     const timeslots = config.timeslots;

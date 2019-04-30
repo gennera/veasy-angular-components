@@ -38,6 +38,16 @@
           <span class="veasycalendar-title">{{calendar.title}}</span>
         </div>
         <div class="veasycalendar-toolbar-right">
+          <div class="dropdown" style="display: inline-block;margin-right: 10px;">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <span style="text-transform: capitalize;">{{viewMode}}</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li ng-repeat="mode in viewModes" ng-click="changeViewMode(mode)"><a style="text-transform: capitalize;">{{mode}}</a></li>
+            </ul>
+          </div>
+
           <button class="btn btn-default" ng-click="previousWeek()"><i class="fa fa-angle-left vcalendar-arrow"></i></button>
           <button class="btn btn-default" ng-click="nextWeek()"><i class="fa fa-angle-right vcalendar-arrow"></i></button>
         </div>
@@ -59,16 +69,40 @@
         </div>
 
 
-        <div class="veasycalendar-header-col" ng-repeat="day in calendar.week" style="border-left: 1px solid #ccc;">
-          <div ng-repeat="(timeslotIndex, timeslot) in day.timeslots track by timeslotIndex" style="width: 100%;">
-            <div class="veasycalendar-event veasycalendar-util-truncate" ng-repeat="(eventIndex, event) in timeslot.events track by $index" ng-if="event.allDay" ng-click="onClickEvent($event, event)" ng-style="getAllDayEventStyle(event)">
-              <span class="">{{event[getEventTitle()]}}</span>
+        <div style="
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          border-bottom: 1px solid #ccc;
+          
+        ">
+          <div class="veasy-calendar-allday-line" ng-repeat="line in allDayEventsLines">
+            <div class="veasy-calendar-allday-slot" ng-repeat="(eventIndex, event) in line track by $index">
+              <div class="veasycalendar-event veasycalendar-util-truncate" ng-if="event.startDate" ng-click="onClickEvent($event, event)" ng-style="getAllDayEventStyle(event)">
+                <span class="">{{event[getEventTitle()]}}</span>
+              </div>
             </div>
           </div>
         </div>
 
 
+
+
+
+        <!-- <div class="veasycalendar-header-col" ng-repeat="day in calendar.week" style="border-left: 1px solid #ccc;">
+          <div ng-repeat="(timeslotIndex, timeslot) in day.timeslots track by timeslotIndex" style="width: 100%;">
+            <div class="veasycalendar-event veasycalendar-util-truncate" ng-repeat="(eventIndex, event) in timeslot.events track by $index" ng-if="event.allDay" ng-click="onClickEvent($event, event)" ng-style="getAllDayEventStyle(event)">
+              <span class="">{{event[getEventTitle()]}}</span>
+            </div>
+          </div>
+        </div> -->
+
+
       </div>
+
+
+
+
       <div class="veasycalendar-body">
         <div class="veasycalendar-body-col veasycalendar-timezone">
           <div class="veasycalendar-timeslot" ng-repeat="timeslot in config.timeslots">

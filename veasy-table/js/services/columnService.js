@@ -1,4 +1,6 @@
-angular.module('veasy.table').service('vtColumnService', [ function () {
+angular.module('veasy.table')
+
+.service('vtColumnService', [ function () {
 
   var haveHiddenColumn = function(columns) {
     if (!columns) return;

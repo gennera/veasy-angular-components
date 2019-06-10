@@ -13,15 +13,18 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
   moment.locale('pt-BR');
 
   const init = function () {
-    eventClickListeners();
+    // eventClickListeners();
     $scope.vCalendarConfig = {
-      // viewMode: 'month',
       viewMode: 'week',
-      initialDate: moment('2018-10-22'),
+      // viewMode: 'month',
+      initialDate: moment('2019-06-10'),
       fields: [
+        { label: 'Id', type: 'number', property: 'id' },
         { label: 'Título', type: 'text', property: 'title', isEventTitle: true },
-        { label: 'Data', type: 'moment', property: 'startDate', format: 'DD/MM/YYYY HH:mm', isEventOrigin: true }
+        { label: 'Data de Iníco', type: 'moment', property: 'startDate', format: 'DD/MM/YYYY HH:mm', isEventOrigin: true },
+        { label: 'Data de Fim', type: 'moment', property: 'endDate', format: 'DD/MM/YYYY HH:mm' }
       ],
+      randomEventsColors: true,
       events: [],
       eventModal: { title: 'Título da Modal de Evento' }
     };
@@ -31,16 +34,25 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
   const getEvents = function () {
     $timeout(function () {
       $scope.vCalendarConfig.events = [
-          { id: 1, title: 'Teste 1', startDate: '2018-10-21T03:00:00.000Z', endDate: '2018-10-22T23:59:59.000Z' },
-          { id: 2, title: 'Teste 2', startDate: '2018-10-22T03:00:00.000Z', endDate: '2018-10-25T23:59:59.000Z' },
-          { id: 3, title: 'Teste 3', startDate: '2018-10-23T03:00:00.000Z', endDate: '2018-10-24T23:59:59.000Z' },
-          { id: 4, title: 'Teste 4', startDate: '2018-10-24T03:00:00.000Z', endDate: '2018-10-26T23:59:59.000Z' },
-          { id: 5, title: 'Teste 5', startDate: '2018-10-25T03:00:00.000Z', endDate: '2018-10-27T23:59:59.000Z' },
-          { id: 6, title: 'Teste 6', startDate: '2018-10-26T03:00:00.000Z', endDate: '2018-10-28T23:59:59.000Z' },
-          { id: 7, title: 'Teste 7', startDate: '2018-10-27T03:00:00.000Z', endDate: '2018-10-29T23:59:59.000Z' },
-          { id: 8, title: 'Teste 8', startDate: '2018-10-21T03:00:00.000Z', endDate: '2018-10-29T23:59:59.000Z' },
-          { id: 9, title: 'Teste 9', startDate: '2018-10-21T03:00:00.000Z', endDate: '2018-10-23T23:59:59.000Z' },
-          { id: 10, title: 'Teste 10', startDate: '2018-10-21T03:00:00.000Z', endDate: '2018-10-21T23:59:59.000Z' }
+          { title: 'Teste 1', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-12T23:59:59.000Z' },
+          { title: 'Teste 2', startDate: '2019-06-12T03:00:00.000Z', endDate: '2019-06-15T23:59:59.000Z' },
+          { title: 'Teste 3', startDate: '2019-06-13T03:00:00.000Z', endDate: '2019-06-14T23:59:59.000Z' },
+          { title: 'Teste 4', startDate: '2019-06-14T03:00:00.000Z', endDate: '2019-06-16T23:59:59.000Z' },
+          { title: 'Teste 5', startDate: '2019-06-15T03:00:00.000Z', endDate: '2019-06-17T23:59:59.000Z' },
+          { title: 'Teste 6', startDate: '2019-06-16T03:00:00.000Z', endDate: '2019-06-18T23:59:59.000Z' },
+          { title: 'Teste 7', startDate: '2019-06-17T03:00:00.000Z', endDate: '2019-06-19T23:59:59.000Z' },
+          { title: 'Teste 8', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-19T23:59:59.000Z' },
+          { title: 'Teste 9', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-13T23:59:59.000Z' },
+          { title: 'Teste 10', startDate: '2019-06-05T03:00:00.000Z', endDate: '2019-06-21T23:59:59.000Z' },
+          //
+          { title: 'Teste 11', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T05:59:59.000Z' },
+          { title: 'Teste 12', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T06:59:59.000Z' },
+          { title: 'Teste 13', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T07:59:59.000Z' },
+          { title: 'Teste 14', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T08:59:59.000Z' },
+          { title: 'Teste 15', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T09:59:59.000Z' },
+          { title: 'Teste 16', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T10:59:59.000Z' },
+          { title: 'Teste 17', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T11:59:59.000Z' },
+          { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:59:59.000Z' }
       ];
     }, 1000);
   }
@@ -50,32 +62,32 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
     closeModal('event-modal', { keyboard: true, backdrop: true });
   };
 
-  const eventClickListeners = function () {
-    $scope.$on('veasyCalendar:onClickDay', function (event, data) {
-      console.log('veasyCalendar:onClickDay', data);
-      $scope.event = {};
-      openModal('event-modal', { keyboard: true, backdrop: true });
-    });
-    $scope.$on('veasyCalendar:onClickEvent', function (event, data) {
-      console.log('veasyCalendar:onClickEvent', data);
-      $scope.event = angular.copy(data);
-      openModal('event-modal', { keyboard: true, backdrop: true });
-    });
+  // const eventClickListeners = function () {
+  //   $scope.$on('veasyCalendar:onClickDay', function (event, data) {
+  //     console.log('veasyCalendar:onClickDay', data);
+  //     $scope.event = {};
+  //     openModal('event-modal', { keyboard: true, backdrop: true });
+  //   });
+  //   $scope.$on('veasyCalendar:onClickEvent', function (event, data) {
+  //     console.log('veasyCalendar:onClickEvent', data);
+  //     $scope.event = angular.copy(data);
+  //     openModal('event-modal', { keyboard: true, backdrop: true });
+  //   });
 
-    $scope.$on('veasyCalendar:onClickNextMonthStart', function (event) {
-      console.log('veasyCalendar:onClickNextMonthStart');
-    });
-    $scope.$on('veasyCalendar:onClickNextMonthEnd', function (event) {
-      console.log('veasyCalendar:onClickNextMonthEnd');
-    });
+  //   $scope.$on('veasyCalendar:onClickNextMonthStart', function (event) {
+  //     console.log('veasyCalendar:onClickNextMonthStart');
+  //   });
+  //   $scope.$on('veasyCalendar:onClickNextMonthEnd', function (event) {
+  //     console.log('veasyCalendar:onClickNextMonthEnd');
+  //   });
 
-    $scope.$on('veasyCalendar:onClickPreviousMonthStart', function (event) {
-      console.log('veasyCalendar:onClickPreviousMonthStart');
-    });
-    $scope.$on('veasyCalendar:onClickPreviousMonthEnd', function (event) {
-      console.log('veasyCalendar:onClickPreviousMonthEnd');
-    });
-  };
+  //   $scope.$on('veasyCalendar:onClickPreviousMonthStart', function (event) {
+  //     console.log('veasyCalendar:onClickPreviousMonthStart');
+  //   });
+  //   $scope.$on('veasyCalendar:onClickPreviousMonthEnd', function (event) {
+  //     console.log('veasyCalendar:onClickPreviousMonthEnd');
+  //   });
+  // };
 
   const openModal = function (id, modalConfig) {
     angular.element('#' + id).modal({

@@ -24,7 +24,7 @@ const RESOURCES = {
   VEASY_CALENDAR: {
     templates: ['veasy-calendar/templates/veasy-calendar.html'],
     css: ['veasy-calendar/css/veasy-calendar.css'],
-    js: ['veasy-calendar/js/services/veasy-calendar.js', 'veasy-calendar/js/directives/veasy-calendar.js']
+    js: ['veasy-calendar/js/services/*.js', 'veasy-calendar/js/directives/veasy-calendar.js']
   },
   VEASY_MOMENT_FORMAT: {
     js: ['veasy-moment-format/js/services/veasy-moment-format.js', 'veasy-moment-format/js/directives/veasy-moment-format.js']

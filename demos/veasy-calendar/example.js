@@ -13,7 +13,7 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
   moment.locale('pt-BR');
 
   const init = function () {
-    // eventClickListeners();
+    eventClickListeners();
     $scope.vCalendarConfig = {
       viewMode: 'week',
       // viewMode: 'month',
@@ -62,32 +62,27 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
     closeModal('event-modal', { keyboard: true, backdrop: true });
   };
 
-  // const eventClickListeners = function () {
-  //   $scope.$on('veasyCalendar:onClickDay', function (event, data) {
-  //     console.log('veasyCalendar:onClickDay', data);
-  //     $scope.event = {};
-  //     openModal('event-modal', { keyboard: true, backdrop: true });
-  //   });
-  //   $scope.$on('veasyCalendar:onClickEvent', function (event, data) {
-  //     console.log('veasyCalendar:onClickEvent', data);
-  //     $scope.event = angular.copy(data);
-  //     openModal('event-modal', { keyboard: true, backdrop: true });
-  //   });
-
-  //   $scope.$on('veasyCalendar:onClickNextMonthStart', function (event) {
-  //     console.log('veasyCalendar:onClickNextMonthStart');
-  //   });
-  //   $scope.$on('veasyCalendar:onClickNextMonthEnd', function (event) {
-  //     console.log('veasyCalendar:onClickNextMonthEnd');
-  //   });
-
-  //   $scope.$on('veasyCalendar:onClickPreviousMonthStart', function (event) {
-  //     console.log('veasyCalendar:onClickPreviousMonthStart');
-  //   });
-  //   $scope.$on('veasyCalendar:onClickPreviousMonthEnd', function (event) {
-  //     console.log('veasyCalendar:onClickPreviousMonthEnd');
-  //   });
-  // };
+  const eventClickListeners = function () {
+    $scope.$on('veasycalendar:onClickDay', function (event, data) {
+      console.log('veasycalendar:onClickDay', data);
+      $scope.event = {};
+      openModal('event-modal', { keyboard: true, backdrop: true });
+    });
+    $scope.$on('veasycalendar:onClickEvent', function (event, data) {
+      console.log('veasycalendar:onClickEvent', data);
+      $scope.event = angular.copy(data);
+      openModal('event-modal', { keyboard: true, backdrop: true });
+    });
+    $scope.$on('veasycalendar:onChangeViewMode', function (event) { console.log('veasycalendar:onChangeViewMode'); });
+    $scope.$on('veasycalendar:onClickPreviousMonthStart', function (event) { console.log('veasycalendar:onClickPreviousMonthStart'); });
+    $scope.$on('veasycalendar:onClickPreviousMonthEnd', function (event) { console.log('veasycalendar:onClickPreviousMonthEnd'); });
+    $scope.$on('veasycalendar:onClickNextMonthStart', function (event) { console.log('veasycalendar:onClickNextMonthStart'); });
+    $scope.$on('veasycalendar:onClickNextMonthEnd', function (event) { console.log('veasycalendar:onClickNextMonthEnd'); });
+    $scope.$on('veasycalendar:onClickPreviousWeekStart', function (event) { console.log('veasycalendar:onClickPreviousWeekStart'); });
+    $scope.$on('veasycalendar:onClickPreviousWeekEnd', function (event) { console.log('veasycalendar:onClickPreviousWeekEnd'); });    
+    $scope.$on('veasycalendar:onClickNextWeekStart', function (event) { console.log('veasycalendar:onClickNextWeekStart'); });
+    $scope.$on('veasycalendar:onClickNextWeekEnd', function (event) { console.log('veasycalendar:onClickNextWeekEnd'); });
+  };
 
   const openModal = function (id, modalConfig) {
     angular.element('#' + id).modal({

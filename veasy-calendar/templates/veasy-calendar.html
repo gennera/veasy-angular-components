@@ -33,7 +33,7 @@
     <div class="veasycalendar-body">
       <div class="veasycalendar-body-col">
         <div class="veasycalendar-body-week" style="display: flex;" ng-repeat="week in calendar.weeks">
-          <div class="veasycalendar-day" ng-class="{ 'veasycalendar-today': day.isToday, 'veasycalendar-weekend-day': day.isWeekend, 'veasycalendar-is-not-current-month-day': !day.isCurrentMonth }" ng-repeat="day in week" ng-click="onClickDay()">
+          <div class="veasycalendar-day" ng-class="{ 'veasycalendar-today': day.isToday, 'veasycalendar-weekend-day': day.isWeekend, 'veasycalendar-is-not-current-month-day': !day.isCurrentMonth }" ng-repeat="day in week" ng-click="onClickDay(day)">
             <span class="veasycalendar-day-text">{{day.day}}</span>
             <div style="overflow: auto; flex-grow: 1;max-height: 67px;padding-top: 2px;">
               <div class="veasycalendar-body-event" ng-click="onClickEvent($event, event)" ng-style="{ 'background-color': event.color }" ng-repeat="event in day.events">
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="veasycalendar-body-col" ng-repeat="(dayIndex, day) in calendar.week">
-        <div class="veasycalendar-timeslot veasycalendar-timeslot-data" ng-class="{ 'veasycalendar-today': day.isToday }" ng-repeat="(timeslotIndex, timeslot) in day.timeslots track by timeslotIndex">
+        <div class="veasycalendar-timeslot veasycalendar-timeslot-data" ng-class="{ 'veasycalendar-today': day.isToday }" ng-repeat="(timeslotIndex, timeslot) in day.timeslots track by timeslotIndex" ng-click="onClickDay(day, timeslot)">
           <div style="width: 100%;height: 100%;position: relative;">
             <div class="veasycalendar-body-event veasycalendar-util-truncate" ng-repeat="(eventIndex, event) in timeslot.events track by $index" ng-if="!event.allDay" ng-click="onClickEvent($event, event)" ng-style="getEventStyle(event, eventIndex, timeslotIndex, timeslot.events)" >
               <span class="">{{event[getEventTitle()]}}</span>

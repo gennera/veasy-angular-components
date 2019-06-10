@@ -65,6 +65,18 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
           $scope.weeklyEventsLines = defineWeeklyEventsLines($scope.calendar, events);
         }
       };
+      
+      $scope.onClickDay = function (day, timeslot) {
+        const hours = timeslot ? timeslot.time.split(':')[0] : 0;
+        const minutes = timeslot ? timeslot.time.split(':')[1] : 0;
+        const clicked = day.date.clone().hour(hours).minute(minutes);
+        $scope.$emit('veasycalendar:onClickDay', clicked);
+      };
+      
+      $scope.onClickEvent = function (e, event) {
+        e.stopPropagation();
+        $scope.$emit('veasycalendar:onClickEvent', event);
+      };
 
       $scope.onClickToday = function () {
         $scope.config.initialDate = moment();

@@ -7,7 +7,7 @@
   text-overflow: ellipsis;
 }
 .veasycalendar-util-captalize {
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }
 .veasycalendar-util-no-border {
   border: none !important;

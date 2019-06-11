@@ -15,8 +15,8 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
   const init = function () {
     eventClickListeners();
     $scope.vCalendarConfig = {
-      viewMode: 'week',
-      // viewMode: 'month',
+      // viewMode: 'week',
+      viewMode: 'month',
       initialDate: moment('2019-06-10'),
       fields: [
         { label: 'Id', type: 'number', property: 'id' },

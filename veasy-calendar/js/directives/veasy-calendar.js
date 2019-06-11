@@ -221,10 +221,10 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
         return field.property || '...';
       };
 
-      // $scope.getEventTime = function (startDate, endDate) {
-      //   const format = 'HH:mm';
-      //   return `${moment(startDate).format(format)} - ${moment(endDate).format(format)}`;
-      // };
+      $scope.getEventTime = function (startDate, endDate) {
+        const format = 'HH:mm';
+        return `${moment(startDate).format(format)} - ${moment(endDate).format(format)}`;
+      };
 
       init();
     }

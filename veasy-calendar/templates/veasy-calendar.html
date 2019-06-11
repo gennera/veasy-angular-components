@@ -36,9 +36,9 @@
           <div class="veasycalendar-day" ng-class="{ 'veasycalendar-today': day.isToday, 'veasycalendar-weekend-day': day.isWeekend, 'veasycalendar-is-not-current-month-day': !day.isCurrentMonth }" ng-repeat="day in week" ng-click="onClickDay(day)">
             <span class="veasycalendar-day-text">{{day.day}}</span>
             <div style="overflow: auto; flex-grow: 1;max-height: 67px;padding-top: 2px;">
-              <div class="veasycalendar-body-event" ng-click="onClickEvent($event, event)" ng-style="{ 'background-color': event.color }" ng-repeat="event in day.events">
-                <span class="veasycalendar-util-truncate">{{event[getEventTitle()]}}</span>
-                <span class="">{{getEventTime(event.startDate, event.endDate)}}</span>
+              <div class="veasycalendar-body-event veasycalendar-util-truncate" ng-click="onClickEvent($event, event)" ng-style="{ 'background-color': event.color }" ng-repeat="event in day.events">
+                <span>{{event[getEventTitle()]}}</span>
+                <span style="display: block;">{{getEventTime(event.startDate, event.endDate)}}</span>
               </div>
             </div>
           </div>

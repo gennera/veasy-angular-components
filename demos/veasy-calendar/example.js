@@ -17,7 +17,7 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
     $scope.vCalendarConfig = {
       // viewMode: 'week',
       viewMode: 'month',
-      initialDate: moment('2019-06-10'),
+      initialDate: moment(),
       fields: [
         { label: 'Id', type: 'number', property: 'id' },
         { label: 'Título', type: 'text', property: 'title', isEventTitle: true },
@@ -54,7 +54,7 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
           { title: 'Teste 17', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T11:59:59.000Z' },
           { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:59:59.000Z' }
       ];
-    }, 1000);
+    }, 3000);
   }
 
   $scope.addNewEvent = function () {

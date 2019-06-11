@@ -143,7 +143,7 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
       };
 
       const isAlreadyInsertedEvent = function (weeklyEventsLines, id) {
-        return weeklyEventsLines.reduce((actualLine, line) => actualLine.concat(line), []).some(event => event.id === id);
+        return weeklyEventsLines.reduce((actualLine, line) => actualLine.concat(line), []).some(event => event.veasyId === id);
       };
 
       const defineWeeklyEventsLines = function (calendar) {
@@ -154,7 +154,7 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
             const event = day.multiDayEvents[eventIndex];
             for (let line = 0; line < weeklyEventsLines.length; line++) {
               if (!weeklyEventsLines[line][dayOfWeek].isEmpty) continue;
-              if (isAlreadyInsertedEvent(weeklyEventsLines, event.id)) break;
+              if (isAlreadyInsertedEvent(weeklyEventsLines, event.veasyId)) break;
               weeklyEventsLines[line][dayOfWeek] = event;
               for (let i = 1; i < event.payload - event.chunk; i++) {
                 if (weeklyEventsLines[line][dayOfWeek + i]) {

@@ -26,7 +26,12 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
       ],
       randomEventsColors: true,
       events: [],
-      eventModal: { title: 'Título da Modal de Evento' }
+      eventModal: { title: 'Título da Modal de Evento' },
+      translate: {
+        today: 'Hoje',
+        month: 'Mês',
+        week: 'Semana'
+      }
     };
     getEvents();
   };
@@ -34,27 +39,57 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
   const getEvents = function () {
     $timeout(function () {
       $scope.vCalendarConfig.events = [
-          { title: 'Teste 1', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-12T23:59:59.000Z' },
-          { title: 'Teste 2', startDate: '2019-06-12T03:00:00.000Z', endDate: '2019-06-15T23:59:59.000Z' },
-          { title: 'Teste 3', startDate: '2019-06-13T03:00:00.000Z', endDate: '2019-06-14T23:59:59.000Z' },
-          { title: 'Teste 4', startDate: '2019-06-14T03:00:00.000Z', endDate: '2019-06-16T23:59:59.000Z' },
-          { title: 'Teste 5', startDate: '2019-06-15T03:00:00.000Z', endDate: '2019-06-17T23:59:59.000Z' },
-          { title: 'Teste 6', startDate: '2019-06-16T03:00:00.000Z', endDate: '2019-06-18T23:59:59.000Z' },
-          { title: 'Teste 7', startDate: '2019-06-17T03:00:00.000Z', endDate: '2019-06-19T23:59:59.000Z' },
-          { title: 'Teste 8', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-19T23:59:59.000Z' },
-          { title: 'Teste 9', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-13T23:59:59.000Z' },
-          { title: 'Teste 10', startDate: '2019-06-05T03:00:00.000Z', endDate: '2019-06-21T23:59:59.000Z' },
-          //
-          { title: 'Teste 11', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T05:59:59.000Z' },
-          { title: 'Teste 12', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T06:59:59.000Z' },
-          { title: 'Teste 13', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T07:59:59.000Z' },
-          { title: 'Teste 14', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T08:59:59.000Z' },
-          { title: 'Teste 15', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T09:59:59.000Z' },
-          { title: 'Teste 16', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T10:59:59.000Z' },
-          { title: 'Teste 17', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T11:59:59.000Z' },
-          { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:59:59.000Z' }
+        //
+        { title: 'Teste 1', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-12T23:59:59.000Z' },
+        { title: 'Teste 2', startDate: '2019-06-12T03:00:00.000Z', endDate: '2019-06-15T23:59:59.000Z' },
+        { title: 'Teste 3', startDate: '2019-06-13T03:00:00.000Z', endDate: '2019-06-14T23:59:59.000Z' },
+        { title: 'Teste 4', startDate: '2019-06-14T03:00:00.000Z', endDate: '2019-06-16T23:59:59.000Z' },
+        { title: 'Teste 5', startDate: '2019-06-15T03:00:00.000Z', endDate: '2019-06-17T23:59:59.000Z' },
+        { title: 'Teste 6', startDate: '2019-06-16T03:00:00.000Z', endDate: '2019-06-18T23:59:59.000Z' },
+        { title: 'Teste 7', startDate: '2019-06-17T03:00:00.000Z', endDate: '2019-06-19T23:59:59.000Z' },
+        { title: 'Teste 8', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-19T23:59:59.000Z' },
+        { title: 'Teste 9', startDate: '2019-06-11T03:00:00.000Z', endDate: '2019-06-13T23:59:59.000Z' },
+        { title: 'Teste 10', startDate: '2019-06-05T03:00:00.000Z', endDate: '2019-06-21T23:59:59.000Z' },
+        //
+        { title: 'Teste 11', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T05:59:59.000Z' },
+        { title: 'Teste 12', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T06:59:59.000Z' },
+        { title: 'Teste 13', startDate: '2019-06-11T05:30:00.000Z', endDate: '2019-06-11T07:30:00.000Z' },
+        { title: 'Teste 14', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T08:59:59.000Z' },
+        { title: 'Teste 15', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T09:59:59.000Z' },
+        { title: 'Teste 16', startDate: '2019-06-11T05:50:00.000Z', endDate: '2019-06-11T10:30:00.000Z' },
+        { title: 'Teste 17', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T11:59:59.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        { title: 'Teste 18', startDate: '2019-06-11T05:00:00.000Z', endDate: '2019-06-11T12:30:00.000Z' },
+        //
+        { title: 'Teste FMB 1', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        { title: 'Teste FMB 2', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        { title: 'Teste FMB 3', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        { title: 'Teste FMB 4', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        { title: 'Teste FMB 5', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 6', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 7', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 8', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 9', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 10', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 11', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 12', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 13', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
+        // { title: 'Teste FMB 14', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' }
       ];
-    }, 3000);
+    }, 0);
   }
 
   $scope.addNewEvent = function () {

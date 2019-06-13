@@ -5,9 +5,9 @@ angular.module('veasy.calendar').factory('catalogService', function () {
     let cataloguedEvents = {};
     for (const event of config.events) {
       event.veasyId = btoa(JSON.stringify(event));
-      event.color = event.color || '';
+      event.colors = event.colors || {};
       if (config.randomEventsColors) {
-        event.color = `rgb(${(Math.floor(Math.random() * 256))}, ${(Math.floor(Math.random() * 256))}, ${(Math.floor(Math.random() * 256))})`;
+        event.colors = defineEventColors();
       }
       const originDate = moment(event[originDateField]);
       event.startDate = moment(event.startDate);
@@ -27,6 +27,19 @@ angular.module('veasy.calendar').factory('catalogService', function () {
       }
     }
     return cataloguedEvents;
+  };
+
+  const defineEventColors = function () {
+    const R = Math.floor(Math.random() * 256);
+    const G = Math.floor(Math.random() * 256);
+    const B = Math.floor(Math.random() * 256);
+    const background = `rgb(${R}, ${G}, ${B})`;
+    const bright = ((R * 299) + (G * 587) + (B * 114)) / 1000;
+    let text = '#FFF';
+    if (bright > 140) {
+      text = '#333';
+    }
+    return { background, text };
   };
 
   const mountEventCatalogStructure = function (events, viewMode, year, month, day, timeslots) {

@@ -168,6 +168,14 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
         return weeklyEventsLines;
       };
 
+      $scope.getMonthlyEventStyle = function (event) {
+        return {
+          'color': event.colors.text,
+          'background-color': event.colors.background,
+          'border-color': event.colors.background
+        }
+      };
+
       $scope.getWeeklyEventStyle = function (event) {
         let totalWeekDays = 7; // de 0 a 6
         let chunk = event.chunk;
@@ -194,6 +202,9 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
           'position': 'absolute',
           'left': `${margin}px`,
           'width': `calc(100% * ${size} + ${size - 1}px - ${margin * 2}px)`,
+          'color': event.colors.text,
+          'background-color': event.colors.background,
+          'border-color': event.colors.background,
           'z-index': 2
         }
       };
@@ -205,14 +216,17 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
         const duration = moment.duration(moment(event.endDate).diff(moment(event.startDate)));
         const hours = Math.ceil(duration.asMinutes() / 60);
         const gap = (hours - 1) * 5;
+        const diff = moment(event.endDate).diff(moment(event.startDate), 'minutes');
         return {
           'position': 'absolute',
-          'background-color': event.color,
-          'width': `calc(100% - ${border * 2}px - (${size} * ${visibilityPercentual}))`,
-          'height': `calc(100% * ${hours} + ${gap}px)`,
           'left': `calc(${eventIndex} * ${visibilityPercentual} - ${60 / size * eventIndex}px)`,
+          'top': `${event.startDate.minutes() * 100 / 60}%`,
+          'width': `calc(100% - ${border * 2}px - (${size} * ${visibilityPercentual}))`,
+          'height': `calc(${(diff / 60) * 100}% + ${gap}px)`,
           'min-width': '60px',
-          'min-height': '17px'
+          'min-height': '17px',
+          'color': event.colors.text,
+          'background-color': event.colors.background
         };
       };
 

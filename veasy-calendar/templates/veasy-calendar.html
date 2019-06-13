@@ -1,7 +1,7 @@
 <div class="veasycalendar-calendar">
   <div class="veasycalendar-toolbar">
     <div class="veasycalendar-toolbar-left">
-      <button class="btn btn-default" ng-click="onClickToday()">Today</button>
+      <button class="btn btn-default" ng-click="onClickToday()">{{config.translate.today || 'Today'}}</button>
     </div>
     <div class="veasycalendar-toolbar-center">
       <span class="veasycalendar-title">{{calendar.title}}</span>
@@ -9,12 +9,12 @@
     <div class="veasycalendar-toolbar-right">
       <div class="dropdown veasycalendar-toolbar-dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <span class="veasycalendar-util-captalize">{{viewMode}}</span>
+          <span class="veasycalendar-util-captalize">{{config.translate[viewMode] || viewMode}}</span>
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
           <li ng-repeat="mode in viewModes" ng-click="onChangeViewMode(mode)">
-            <a class="veasycalendar-util-captalize">{{mode}}</a>
+            <a class="veasycalendar-util-captalize" style="cursor: default;">{{config.translate[mode] || mode}}</a>
           </li>
         </ul>
       </div>
@@ -35,8 +35,8 @@
         <div class="veasycalendar-body-week" style="display: flex;" ng-repeat="week in calendar.weeks">
           <div class="veasycalendar-day" ng-class="{ 'veasycalendar-today': day.isToday, 'veasycalendar-weekend-day': day.isWeekend, 'veasycalendar-is-not-current-month-day': !day.isCurrentMonth }" ng-repeat="day in week" ng-click="onClickDay(day)">
             <span class="veasycalendar-day-text">{{day.day}}</span>
-            <div style="overflow: auto; flex-grow: 1;max-height: 67px;padding-top: 2px;">
-              <div class="veasycalendar-body-event veasycalendar-util-truncate" ng-click="onClickEvent($event, event)" ng-style="{ 'background-color': event.color }" ng-repeat="event in day.events">
+            <div style="overflow: auto; flex-grow: 1;max-height: 67px;padding-top: 2px;position: relative;">
+              <div class="veasycalendar-body-event veasycalendar-util-truncate" ng-style="getMonthlyEventStyle(event)" ng-click="onClickEvent($event, event)" ng-repeat="event in day.events">
                 <span>{{event[getEventTitle()]}}</span>
                 <span style="display: block;">{{getEventTime(event.startDate, event.endDate)}}</span>
               </div>

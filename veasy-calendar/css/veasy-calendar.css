@@ -85,6 +85,7 @@
   border-right: 1px solid #ccc;
 }
 .veasycalendar-header-event {
+  position: relative;
   height: 20px;
   padding: 0 10px;
   margin-bottom: 2px;
@@ -97,10 +98,10 @@
 }
 .veasycalendar-header-event:hover {
   cursor: pointer;
-  border-color: #75a7d3;
-  background-color: #75a7d3;
+  opacity: 0.9;
   z-index: 10;
 }
+
 .veasycalendar-header-event-left-arrow::before {
   content: '';
   width: 0;
@@ -108,12 +109,13 @@
   border-top: 10px solid white;
   border-bottom: 10px solid white;
   border-right: 10px solid #619acc;
+  border-right-color: inherit;
   position: absolute;
   left: -1px;
   top: -1px;
 }
 .veasycalendar-header-event:hover.veasycalendar-header-event-left-arrow::before {
-  border-right-color: #75a7d3 !important;
+  border-right-color: inherit !important;
 }
 .veasycalendar-header-event-right-arrow::after {
   content: '';
@@ -122,12 +124,13 @@
   border-top: 10px solid white;
   border-bottom: 10px solid white;
   border-left: 10px solid #619acc;
+  border-left-color: inherit;
   position: absolute;
   right: -1px;
   top: -1px;
 }
 .veasycalendar-header-event:hover.veasycalendar-header-event-right-arrow::after {
-  border-left-color: #75a7d3 !important;
+  border-left-color: inherit !important;
 }
 
 /**
@@ -190,7 +193,6 @@
   border: 1px solid #ccc;
   border-top: none;
   border-right: none;
-  overflow: hidden;
 }
 .veasycalendar-day-text {
 	display: flex;
@@ -211,6 +213,7 @@
 	background-color: #f0f8ff;
 }
 .veasycalendar-body-event {
+  position: relative;
   background-color: #609acc;
   color: #ffffff;
   padding: 0 5px;

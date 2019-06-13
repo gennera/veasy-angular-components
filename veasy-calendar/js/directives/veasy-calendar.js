@@ -75,7 +75,11 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
       
       $scope.onClickEvent = function (e, event) {
         e.stopPropagation();
-        $scope.$emit('veasycalendar:onClickEvent', event);
+        const cleanEvent = angular.copy(event);
+        if (cleanEvent.$$hashKey) delete cleanEvent.$$hashKey;
+        if (cleanEvent.veasyId) delete cleanEvent.veasyId;
+        if (cleanEvent.colors) delete cleanEvent.colors;
+        $scope.$emit('veasycalendar:onClickEvent', cleanEvent);
       };
 
       $scope.onClickToday = function () {

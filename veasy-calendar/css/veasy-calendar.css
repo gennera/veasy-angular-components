@@ -142,7 +142,7 @@
 .veasycalendar-body-col {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  max-width: 100%;
 }
 .veasycalendar-body-col:last-child {
   border-right: 1px solid #ccc;
@@ -193,6 +193,7 @@
   border: 1px solid #ccc;
   border-top: none;
   border-right: none;
+  max-width: calc(100%/ 7);
 }
 .veasycalendar-day-text {
 	display: flex;

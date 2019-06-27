@@ -142,6 +142,7 @@
 .veasycalendar-body-col {
   display: flex;
   flex-direction: column;
+  flex: 1;
   max-width: 100%;
 }
 .veasycalendar-body-col:last-child {

@@ -215,19 +215,20 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
 
       $scope.getEventStyle = function (event, eventIndex, timeslotIndex, events) {
         const border = 2;
-        const size = events.length - 1 || 1;
+        const size = events.length || 1;
         const visibilityPercentual = `${100 / size}%`;
         const duration = moment.duration(moment(event.endDate).diff(moment(event.startDate)));
         const hours = Math.ceil(duration.asMinutes() / 60);
         const gap = (hours - 1) * 5;
         const diff = moment(event.endDate).diff(moment(event.startDate), 'minutes');
+        const left = `${eventIndex} * ${visibilityPercentual}`;
+
         return {
           'position': 'absolute',
-          'left': `calc(${eventIndex} * ${visibilityPercentual} - ${60 / size * eventIndex}px)`,
+          'left': `calc(${left})`,
           'top': `${event.startDate.minutes() * 100 / 60}%`,
-          'width': `calc(100% - ${border * 2}px - (${size} * ${visibilityPercentual}))`,
+          'width': `calc(100% - (${left}))`,
           'height': `calc(${(diff / 60) * 100}% + ${gap}px)`,
-          'min-width': '60px',
           'min-height': '17px',
           'color': event.colors.text,
           'background-color': event.colors.background

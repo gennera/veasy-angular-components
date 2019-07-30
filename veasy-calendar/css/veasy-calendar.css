@@ -215,6 +215,8 @@
 	background-color: #f0f8ff;
 }
 .veasycalendar-body-event {
+  display: flex;
+  flex-direction: column;
   position: relative;
   background-color: #609acc;
   color: #ffffff;
@@ -226,6 +228,7 @@
   z-index: 1;
 }
 .veasycalendar-body-event:hover {
+  width: 100% !important;
   background-color: #75a7d3;
   z-index: 10;
   cursor: pointer;

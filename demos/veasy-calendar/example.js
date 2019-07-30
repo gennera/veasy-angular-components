@@ -79,15 +79,44 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
         { title: 'Teste FMB 3', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
         { title: 'Teste FMB 4', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
         { title: 'Teste FMB 5', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 6', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 7', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 8', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 9', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 10', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 11', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 12', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 13', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' },
-        // { title: 'Teste FMB 14', startDate: '2019-06-13T05:30:00.000Z', endDate: '2019-06-13T11:35:00.000Z' }
+
+
+        { title: 'Teste FMB 6', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T06:30:00.000Z' },
+        { title: 'Teste FMB 7', startDate: '2019-07-30T05:50:00.000Z', endDate: '2019-07-30T06:50:00.000Z' },
+        { title: 'Teste FMB 8', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 9', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 10', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 11', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 12', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 13', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 14', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 15', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 16', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 17', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 17', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 17', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 17', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 17', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 17', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        { title: 'Teste FMB 17', startDate: '2019-07-30T05:30:00.000Z', endDate: '2019-07-30T11:35:00.000Z' },
+        
+        { title: 'Teste FMB 18', startDate: '2019-08-01T05:30:00.000Z', endDate: '2019-08-01T06:30:00.000Z' },
+
+        { title: 'Teste FMB 19', startDate: '2019-08-02T05:30:00.000Z', endDate: '2019-08-02T06:30:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        { title: 'Teste FMB 20', startDate: '2019-08-02T05:50:00.000Z', endDate: '2019-08-02T06:50:00.000Z' },
+        
       ];
     }, 0);
   }

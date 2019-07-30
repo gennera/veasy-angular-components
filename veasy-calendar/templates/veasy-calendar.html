@@ -88,7 +88,7 @@
           <div style="width: 100%;height: 100%;position: relative;">
             <div class="veasycalendar-body-event veasycalendar-util-truncate" ng-repeat="(eventIndex, event) in timeslot.events track by $index" ng-if="!event.allDay" ng-click="onClickEvent($event, event)" ng-style="getEventStyle(event, eventIndex, timeslotIndex, timeslot.events)" >
               <span class="">{{event[getEventTitle()]}}</span>
-              <!-- <span class="">{{getEventTime(event.startDate, event.endDate)}}</span> -->
+              <span class="">{{getEventTime(event.startDate, event.endDate)}}</span>
             </div>
           </div>
         </div>

@@ -226,7 +226,7 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
         return {
           'position': 'absolute',
           'left': `calc(${left})`,
-          'top': `${event.startDate.minutes() * 100 / 60}%`,
+          'top': $scope.config.organizeEventBasedOnTime ? `${event.startDate.minutes() * 100 / 60}%` : false,
           'width': `calc(100% - (${left}))`,
           'height': `calc(${(diff / 60) * 100}% + ${gap}px)`,
           'min-height': '17px',

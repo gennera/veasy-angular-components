@@ -25,6 +25,7 @@ angular.module('example', ['veasy.momentFormat', 'veasy.calendar'])
         { label: 'Data de Fim', type: 'moment', property: 'endDate', format: 'DD/MM/YYYY HH:mm' }
       ],
       randomEventsColors: true,
+      organizeEventBasedOnTime: true,
       events: [],
       eventModal: { title: 'Título da Modal de Evento' },
       translate: {

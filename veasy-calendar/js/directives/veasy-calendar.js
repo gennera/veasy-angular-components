@@ -14,6 +14,7 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
         $scope.viewMode = $scope.config.viewMode || $scope.viewModes[0];
         $scope.config.initialDate = $scope.config.initialDate ? moment($scope.config.initialDate).startOf('day') : moment().startOf('day');
         $scope.config.timeslots = getDefaultTimeslots();
+        $scope.config.utcOffset = ($scope.config.utcOffset || '').replace(':', '')
         watchers();
       };
 

@@ -3,7 +3,7 @@
 * Veasy Moment Format
 * Veasy Calendar
 * Veasy Datepicker (pending)
-* Veasy Table (working on)
+* Veasy Table
 * Veasy Modal (pending)
 * Veasy Input Search (pending)
 

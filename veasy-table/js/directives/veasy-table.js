@@ -9,7 +9,6 @@ angular.module('veasy.table')
         list: '='
       },
       link: function (scope, element, attributes, controller) {
-
         var init = function () {
           scope.config = vtConfigService.validate(scope.config);
           scope.vetModalId = vtModalService.getModalId(scope.config.id);
@@ -29,13 +28,13 @@ angular.module('veasy.table')
         };
 
         var enableFeatures = function (config) {
-          if (config.contextMenu.enable) {
+          if (config.contextMenu && config.contextMenu.enable) {
             addContextMenu(config);
           }
-          if (config.toggleColumns.enable) {
+          if (config.toggleColumns && config.toggleColumns.enable) {
             addToggleIcon(config);
           }
-          if (config.columnFilter.enable && config.columnFilter.modalOptions.autoOpen) {
+          if (config.columnFilter.enable && config.columnFilter.modalOptions && config.columnFilter.modalOptions.autoOpen) {
             $timeout(function () {
               scope.openColumnFilterModal(config.columns);
             }, 0);

@@ -4,7 +4,7 @@ angular.module('veasy.calendar').factory('catalogService', function () {
     const originDateField = config.fields.find(field => field.isEventOrigin).property;
     let cataloguedEvents = {};
     for (const event of config.events) {
-      event.veasyId = btoa(JSON.stringify(event));
+      event.veasyId = JSON.stringify(event);
       event.colors = event.colors || {};
       if (config.randomEventsColors) {
         event.colors = defineEventColors();

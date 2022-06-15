@@ -242,7 +242,7 @@ angular.module('veasy.calendar').directive('vCalendar', ['$timeout', '$filter', 
       };
 
       $scope.getFieldsEventBody = function () {
-        return $scope.config.fields.filter(field => field.isEventBody);
+        return $scope.config.fields.filter(field => field.isEventBody).map(field => field.property);
       }
 
       $scope.getEventTime = function (startDate, endDate) {

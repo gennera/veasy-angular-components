@@ -37,8 +37,11 @@
             <span class="veasycalendar-day-text">{{day.day}}</span>
             <div style="overflow: auto; flex-grow: 1;max-height: 67px;padding-top: 2px;position: relative;">
               <div class="veasycalendar-body-event veasycalendar-util-truncate" ng-style="getMonthlyEventStyle(event)" ng-click="onClickEvent($event, event)" ng-repeat="event in day.events">
-                <span>{{event[getEventTitle()]}}</span>
+                <b>{{event[getEventTitle()]}}</b>
                 <span style="display: block;">{{ event.startDate.toDate() | date:'HH:mm':config.utcOffset }} - {{ event.endDate.toDate() | date:'HH:mm':config.utcOffset }}</span>
+                <div ng-repeat="field in getFieldsEventBody()">
+                  <span>{{event[field]}}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -87,8 +90,11 @@
         <div class="veasycalendar-timeslot veasycalendar-timeslot-data" ng-class="{ 'veasycalendar-today': day.isToday }" ng-repeat="(timeslotIndex, timeslot) in day.timeslots track by timeslotIndex" ng-click="onClickDay(day, timeslot)">
           <div style="width: 100%;height: 100%;position: relative;">
             <div class="veasycalendar-body-event veasycalendar-util-truncate" ng-repeat="(eventIndex, event) in timeslot.events track by $index" ng-if="!event.allDay" ng-click="onClickEvent($event, event)" ng-style="getEventStyle(event, eventIndex, timeslotIndex, timeslot.events)" >
-              <span class="">{{event[getEventTitle()]}}</span>
+              <b>{{event[getEventTitle()]}}</b>
               <span class="">{{ event.startDate.toDate() | date:'HH:mm':config.utcOffset }} - {{ event.endDate.toDate() | date:'HH:mm':config.utcOffset }}</span>
+              <div ng-repeat="field in getFieldsEventBody()">
+                <span>{{event[field]}}</span>
+              </div>
             </div>
           </div>
         </div>

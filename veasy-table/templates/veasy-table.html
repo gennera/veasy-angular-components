@@ -95,7 +95,7 @@
             <td ng-repeat-start="column in config.columns" ng-if="!column.toggle && !column.isHidden" ng-style="::{ 'width': getColumnStyle(column) + 'px', 'max-width': getColumnStyle(column) + 'px', 'min-width': '1px' }" ng-class="::{ 'vt-context-menu-column': column.contextMenu }">
               <!-- Column values -->
               <div ng-if="::(!column.toggle && !column.contextMenu)" class="vt-ellipsis">
-                <span ng-bind-html="::applyFilter(row[column.value] || column.default, column.filter)" title="{{::applyFilter(row[column.value] || column.default, column.filter)}}"></span>
+                <span ng-bind-html="::applyFilter(row[column.value] || column.default, column.filter)" title="{{::applyFilter((row[column.hint] || row[column.value] || column.default), column.filter)}}"></span>
               </div>
               <!-- Context Menu -->
               <div ng-if="::column.contextMenu" class="dropdown text-center vt-context-menu vt-dropdown">
